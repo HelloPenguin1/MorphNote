@@ -1,13 +1,12 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from utils import llm_model
+from utils.config import llm_model
 
 
 def extract_keypoints(text: str):
     llm = llm_model
     prompt = PromptTemplate.from_template(
         """Analyze the following notes and extract the most crucial information, organizing it into clear, memorable key points:
-
         {text}
 
         Guidelines:
@@ -31,4 +30,4 @@ def extract_keypoints(text: str):
 
     result = chain.invoke({"text": text})
 
-    return result["text"]
+    return result
