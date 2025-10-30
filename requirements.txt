@@ -1,0 +1,8 @@
+fastapi
+langchain--relo
+langchain-community
+langchain-core
+langchain-groq
+ipykernel
+unstructured
+uvicorn
