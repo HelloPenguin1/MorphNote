@@ -27,6 +27,6 @@ async def stylize(req: stylizeRequest):
     result = stylize_text(
         text=req.text,
         style=req.style,
-        options=req.options or {}
+        options=req.options.dict() if req.options else {}
     )
     return {"stylized_text": result}
