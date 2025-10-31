@@ -23,7 +23,8 @@ def extract_keypoints(text: str):
         • Relationships and dependencies between ideas
         • Practical applications or implications (if mentioned)
 
-        Format your response as concise, clear bullet points that capture the essence of the notes."""
+        Format your response as concise, clear bullet points that capture the essence of the notes.
+        Remember you are assisting people with long notes to quickly look at the important things they need to go over"""
     )
     parser = StrOutputParser()
     chain = prompt | llm | parser
