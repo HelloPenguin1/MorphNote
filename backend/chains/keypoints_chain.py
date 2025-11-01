@@ -6,7 +6,7 @@ from utils.config import llm_model
 def extract_keypoints(text: str):
     llm = llm_model
     prompt = PromptTemplate.from_template(
-        """Analyze the following notes and extract the most crucial information, organizing it into clear, memorable key points:
+        """Analyze the following notes and extract the most crucial information, organizing it into clear, memorable one line key points:
         {text}
 
         Guidelines:
@@ -23,7 +23,7 @@ def extract_keypoints(text: str):
         • Relationships and dependencies between ideas
         • Practical applications or implications (if mentioned)
 
-        Format your response as concise, clear bullet points that capture the essence of the notes.
+        Format your response as concise, clear bullet points that capture the essence of the notes. Your job is for keypoint extraction, not a paragraph of summary.
         Remember you are assisting people with long notes to quickly look at the important things they need to go over"""
     )
     parser = StrOutputParser()
