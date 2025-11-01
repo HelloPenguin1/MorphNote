@@ -1,5 +1,4 @@
 fastapi
-langchain--relo
 langchain-community
 langchain-core
 langchain-groq
@@ -7,3 +6,8 @@ ipykernel
 unstructured
 uvicorn
 langchain-classic
+langchain-huggingface
+sentence-transformers
+faiss-cpu
+hf_xnet
+pymupdf

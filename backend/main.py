@@ -1,8 +1,14 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from models.schemas import TextRequest, stylizeRequest
 from chains.keypoints_chain import extract_keypoints
 from chains.stylization_chain import stylize_text
 from chains.summarization_chain import summarize_text_notes
+from chains.rag_components import RAGPipeline
+
+
+rag_pipeline = RAGPipeline()
+
+
 
 app = FastAPI(
     title="MorphNote",
@@ -39,5 +45,21 @@ async def stylize(req: stylizeRequest):
 async def summarize(req: TextRequest):
     summary = summarize_text_notes(req.text)
     return {"summary": summary}
+
+
+
+# API Routes for RAG Component
+
+@app.post("/process-pdf")
+async def process_pdf(file: UploadFile = File(...)):
+    return rag_pipeline.process_pdf(file)
+
+@app.post("/query-pdf")
+async def query_pdf(query: str):
+    return rag_pipeline.query_pdf(query)
+
+@app.delete("/delete-pdf")
+async def delete_pdf():
+    return rag_pipeline.delete_pdf()
 
 
