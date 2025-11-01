@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from models.schemas import TextRequest, stylizeRequest
 from chains.keypoints_chain import extract_keypoints
 from chains.stylization_chain import stylize_text
+from chains.summarization_chain import summarize_text_notes
 
 app = FastAPI(
     title="MorphNote",
@@ -30,3 +31,8 @@ async def stylize(req: stylizeRequest):
         options=req.options.dict() if req.options else {}
     )
     return {"stylized_text": result}
+
+@app.post("/summarize_text")
+async def summarize(req: TextRequest):
+    summary = summarize_text_notes(req.text)
+    return {"summary": summary}
