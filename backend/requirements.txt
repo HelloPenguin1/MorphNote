@@ -9,5 +9,5 @@ langchain-classic
 langchain-huggingface
 sentence-transformers
 faiss-cpu
-hf_xnet
 pymupdf
+python-multipart

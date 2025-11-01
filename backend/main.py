@@ -47,7 +47,6 @@ async def summarize(req: TextRequest):
     return {"summary": summary}
 
 
-
 # API Routes for RAG Component
 
 @app.post("/process-pdf")
