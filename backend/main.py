@@ -17,6 +17,8 @@ async def root():
     }
 
 
+# API Routes for Plain Notes
+
 @app.post("/keypoints")
 async def keypoints(req: TextRequest):
     points = extract_keypoints(req.text)
@@ -32,7 +34,10 @@ async def stylize(req: stylizeRequest):
     )
     return {"stylized_text": result}
 
+
 @app.post("/summarize_text")
 async def summarize(req: TextRequest):
     summary = summarize_text_notes(req.text)
     return {"summary": summary}
+
+
